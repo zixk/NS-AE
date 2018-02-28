@@ -21,10 +21,10 @@ correct_trace(){
     done <<< "$OUTPUT"
 }
 
-IP="IPv4"
+IP="IPv6"
 
 inputfile="./dnslu/$2.out"
-outputfile="./ipv4/$2.dot"
+outputfile="./ipv6/$2.dot"
 echo "input: $inputfile"
 while IFS= read -r line 
 do
