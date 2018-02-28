@@ -14,21 +14,18 @@ correct_trace(){
         else
             if [ "$routerAddr" != "*" ] ; then
                 SECOND="\"$routerAddr\""
-                echo "$FIRST" -- "$SECOND" >> "./youtube4.dot"
+                echo "$FIRST" -- "$SECOND" >> "$outputfile"
                 FIRST="$SECOND"
             fi
         fi
     done <<< "$OUTPUT"
 }
 
-if [ $1 -eq "-4" ] ; then
-    IP="IPv4"
-fi
-if [ $1 -eq "-6" ] ; then
-    IP="IPv6"
-fi
+IP="IPv4"
 
-inputfile="../dnslu/youtube.out"
+inputfile="./dnslu/$2.out"
+outputfile="./ipv4/$2.dot"
+echo "input: $inputfile"
 while IFS= read -r line 
 do
     ipType="$(cut -d" " -f2-2 <<<"$line")"
